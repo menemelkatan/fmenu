@@ -1,0 +1,224 @@
+*
+  padding: 0
+  margin: 0
+  box-sizing: border-box
+  font-family: sans-serif
+
+body
+  background: #c1d18a
+
+/* navbar */
+.fmenu
+  width: 100%
+  background: #333
+  display: flex
+  justify-content: space-between
+  align-items: center
+  padding: 10px 15px
+  position: relative
+
+  /* primary menu */
+  ul
+    list-style-type: none
+    display: flex
+    @media(max-width: 769px)
+      display: none
+
+    // menu item
+    li
+      a
+        display: block
+        padding: 10px 15px
+        text-decoration: none
+        color: white
+
+        &:hover
+          background: white
+          color: #333
+
+    /* menu item with submenu */
+    .with-subfmenu
+      position: relative
+
+      &:after
+        content: "+"
+        position: absolute
+        color: white
+        top: 10px
+        right: 0px
+
+
+      /* submenu */
+      .subfmenu
+        position: absolute
+        top: 100%
+        left: 0
+        min-width: 150px
+        list-style-type: none
+        transform: scaleY(0)
+        transform-origin: top
+        transition: 0.3s ease-in-out all
+        display: block
+
+        a
+          display: block
+          padding: 10px 15px
+          text-decoration: none
+          color: #333
+          background: white
+
+          &:hover
+            background: #333
+            color: white
+
+        @media(max-width: 769px)
+          transform: scaleY(1)
+
+        .with-subfmenu
+          &:after
+            color: #333
+
+          .subfmenu
+            left: 100%
+            top: 0
+
+      &:hover > .subfmenu
+        transform: scaleY(1)
+
+
+
+
+
+  /* toggle menu button */
+  .fmenu-btn
+    position: absolute
+    right: 20px
+    top: 10px
+    background: transparent
+    font-size: 25px
+    border: none
+    cursor: pointer
+    color: white
+    display: none
+
+    @media(max-width: 769px)
+      display: block
+
+
+.fmenu-show
+  display: block
+
+  /* primary menu */
+  ul
+    list-style-type: none
+    display: block
+    margin: 20px auto
+
+    /* menu item */
+    li
+      width: 100%
+      a
+        display: block
+        padding: 10px 15px
+        text-decoration: none
+        color: white
+        width: 100%
+        border-bottom: 1px solid #4a4a4a
+
+        &:hover
+          background: white
+          color: #333
+
+    /* menu item with submenu */
+    .with-subfmenu
+      a
+        position: relative
+
+
+      &:hover
+        .subfmenu
+          visibility: visible
+
+      /* submenu */
+      .subfmenu
+        position: relative
+        display: none
+        margin-left: 20px
+
+        .subfmenu
+          left: 0 !important
+
+        a
+          display: block
+          padding: 10px 15px
+          text-decoration: none
+          color: #333
+          background: white
+
+          &:hover
+            background: #333
+            color: white
+
+          &:after
+            content: ""
+
+/* toggle submenu class */
+.subfmenu-show
+  display: block !important
+
+
+
+
+/*rtl menu*/
+[data-fmenu-dir="rtl"]
+  direction: rtl
+  /* toggle menu button */
+  .fmenu-btn
+    right: calc(100% - 40px)
+    top: 10px
+
+  /* menu item with submenu */
+  .with-subfmenu
+    position: relative
+
+    &:after
+      content: "+"
+      position: absolute
+      color: white
+      right: 85% !important
+
+
+    /* submenu */
+    .subfmenu
+      top: 100%
+      left: 0
+
+      .subfmenu
+        right: 100%
+
+
+.fmenu-show[data-fmenu-dir="rtl"]
+  /* submenu */
+  .subfmenu
+    position: relative
+    display: none
+    margin-right: 20px
+
+    .subfmenu
+      right: 20px
+
+
+/*bottom menu*/
+[data-fmenu-position="bottom"]
+  position: absolute
+  bottom: 0
+  left: 0
+
+/*fixed menu*/
+[data-fmenu-fixed="true"]
+  position: fixed
+  top: 0
+  left: 0
+
+p
+  margin: 300px 0
