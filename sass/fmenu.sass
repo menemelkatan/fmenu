@@ -5,7 +5,7 @@
   font-family: sans-serif
 
 body
-  background: #c1d18a
+  background: #cd8675
 
 /* navbar */
 .fmenu
@@ -14,8 +14,34 @@ body
   display: flex
   justify-content: space-between
   align-items: center
-  padding: 10px 15px
+  padding: 15px
   position: relative
+  min-height: 50px
+
+  .fmenu-logo
+    width: 80px
+
+  .fmenu-search
+    position: relative
+    input
+      width: 0
+      height: 30px
+      background: white
+      border: none
+      border-radius: 2px
+      opacity: 0.9
+      margin: 0 10px
+      transition: 0.3s ease-in-out all
+
+      &:focus
+        width: 150px
+        padding: 0 5px
+
+    label
+      color: white
+      cursor: pointer
+      margin-left: 50px
+
 
   /* primary menu */
   ul
@@ -105,6 +131,65 @@ body
       display: block
 
 
+
+/*menu mobile mode*/
+[data-fmenu-allMobile="true"]
+  ul
+    display: none
+
+    /* menu item */
+    li
+      width: 100%
+      a
+        display: block
+        padding: 10px 15px
+        text-decoration: none
+        color: white
+        width: 100%
+        border-bottom: 1px solid #4a4a4a
+
+        &:hover
+          background: white
+          color: #333
+
+    /* menu item with submenu */
+    .with-subfmenu
+      a
+        position: relative
+
+
+      &:hover
+        .subfmenu
+          visibility: visible
+
+      /* submenu */
+      .subfmenu
+        position: relative
+        display: none
+        margin-left: 20px
+
+        .subfmenu
+          left: 0 !important
+
+        a
+          display: block
+          padding: 10px 15px
+          text-decoration: none
+          color: #333
+          background: white
+
+          &:hover
+            background: #333
+            color: white
+
+          &:after
+            content: ""
+
+  .fmenu-btn
+    display: block
+
+
+/*show the in mobile mode*/
 .fmenu-show
   display: block
 
@@ -144,6 +229,8 @@ body
         position: relative
         display: none
         margin-left: 20px
+
+        transform: scaleY(1)
 
         .subfmenu
           left: 0 !important

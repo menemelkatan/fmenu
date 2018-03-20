@@ -6,7 +6,7 @@
 }
 
 body {
-  background: #c1d18a;
+  background: #cd8675;
 }
 
 /* navbar */
@@ -25,10 +25,37 @@ body {
   -webkit-align-items: center;
       -ms-flex-align: center;
           align-items: center;
-  padding: 10px 15px;
-  position: relative
+  padding: 15px;
+  position: relative;
+  min-height: 50px
   /* primary menu */
   /* toggle menu button */
+}
+.fmenu .fmenu-logo {
+  width: 80px;
+}
+.fmenu .fmenu-search {
+  position: relative;
+}
+.fmenu .fmenu-search input {
+  width: 0;
+  height: 30px;
+  background: white;
+  border: none;
+  border-radius: 2px;
+  opacity: 0.9;
+  margin: 0 10px;
+  -webkit-transition: 0.3s ease-in-out all;
+          transition: 0.3s ease-in-out all;
+}
+.fmenu .fmenu-search input:focus {
+  width: 150px;
+  padding: 0 5px;
+}
+.fmenu .fmenu-search label {
+  color: white;
+  cursor: pointer;
+  margin-left: 50px;
 }
 .fmenu ul {
   list-style-type: none;
@@ -126,6 +153,63 @@ body {
     display: block;
   }
 }
+/*menu mobile mode */
+[data-fmenu-allMobile="true"] ul {
+  display: none
+  /* menu item */
+  /* menu item with submenu */
+}
+[data-fmenu-allMobile="true"] ul li {
+  width: 100%;
+}
+[data-fmenu-allMobile="true"] ul li a {
+  display: block;
+  padding: 10px 15px;
+  text-decoration: none;
+  color: white;
+  width: 100%;
+  border-bottom: 1px solid #4a4a4a;
+}
+[data-fmenu-allMobile="true"] ul li a:hover {
+  background: white;
+  color: #333;
+}
+[data-fmenu-allMobile="true"] ul .with-subfmenu {
+  /* submenu */
+}
+[data-fmenu-allMobile="true"] ul .with-subfmenu a {
+  position: relative;
+}
+[data-fmenu-allMobile="true"] ul .with-subfmenu:hover .subfmenu {
+  visibility: visible;
+}
+[data-fmenu-allMobile="true"] ul .with-subfmenu .subfmenu {
+  position: relative;
+  display: none;
+  margin-left: 20px;
+}
+[data-fmenu-allMobile="true"] ul .with-subfmenu .subfmenu .subfmenu {
+  left: 0 !important;
+}
+[data-fmenu-allMobile="true"] ul .with-subfmenu .subfmenu a {
+  display: block;
+  padding: 10px 15px;
+  text-decoration: none;
+  color: #333;
+  background: white;
+}
+[data-fmenu-allMobile="true"] ul .with-subfmenu .subfmenu a:hover {
+  background: #333;
+  color: white;
+}
+[data-fmenu-allMobile="true"] ul .with-subfmenu .subfmenu a:after {
+  content: "";
+}
+[data-fmenu-allMobile="true"] .fmenu-btn {
+  display: block;
+}
+
+/*show the in mobile mode */
 .fmenu-show {
   display: block
   /* primary menu */
@@ -165,6 +249,9 @@ body {
   position: relative;
   display: none;
   margin-left: 20px;
+  -webkit-transform: scaleY(1);
+      -ms-transform: scaleY(1);
+          transform: scaleY(1);
 }
 .fmenu-show ul .with-subfmenu .subfmenu .subfmenu {
   left: 0 !important;
