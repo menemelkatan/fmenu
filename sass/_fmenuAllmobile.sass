@@ -1,0 +1,47 @@
+/*menu mobile mode*/
+[data-fmenu-allMobile="true"]
+  ul
+    display: none
+
+    /* menu item */
+    li
+      width: 100%
+      a
+        display: block
+        padding: 10px 15px
+        text-decoration: none
+        width: 100%
+
+        &:hover
+          background: white
+          color: #333
+
+    /* menu item with submenu */
+    .with-subfmenu
+      a
+        position: relative
+
+
+      &:hover
+        .subfmenu
+          visibility: visible
+
+      /* submenu */
+      .subfmenu
+        position: relative
+        display: none
+        margin-left: 20px
+
+        .subfmenu
+          left: 0 !important
+
+        a
+          display: block
+          padding: 10px 15px
+          text-decoration: none
+
+          &:after
+            content: ""
+
+  .fmenu-btn
+    display: block

@@ -1,0 +1,52 @@
+/*show the in mobile mode*/
+.fmenu-show
+  display: block
+
+  /* primary menu */
+  ul
+    list-style-type: none
+    display: block
+    margin: 20px auto
+
+    /* menu item */
+    li
+      width: 100%
+      a
+        display: block
+        padding: 10px 15px
+        text-decoration: none
+        width: 100%
+
+
+    /* menu item with submenu */
+    .with-subfmenu
+      a
+        position: relative
+
+
+      &:hover
+        .subfmenu
+          visibility: visible
+
+      /* submenu */
+      .subfmenu
+        position: relative
+        display: none
+        margin-left: 20px
+
+        transform: scaleY(1)
+
+        .subfmenu
+          left: 0 !important
+
+        a
+          display: block
+          padding: 10px 15px
+          text-decoration: none
+          
+          &:after
+            content: ""
+
+/* toggle submenu class */
+.subfmenu-show
+  display: block !important

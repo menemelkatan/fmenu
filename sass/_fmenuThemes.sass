@@ -1,0 +1,58 @@
+$london: #219c56
+$paris: #12489a
+
+[data-fmenu-theme="london"]
+  background: $london
+
+  /* primary menu */
+  ul
+    background: $london
+    li
+      a
+        &:hover
+          background: white
+          color: $london
+
+    /* menu item with submenu */
+    .with-subfmenu
+      &:hover:after
+        color: $london
+
+      /* submenu */
+      .subfmenu
+        a
+          color: white
+          background: $london
+
+          &:hover
+            background: white
+            color: $london
+
+
+
+[data-fmenu-theme="paris"]
+  background: $paris
+
+  /* primary menu */
+  ul
+    background: $paris
+    li
+      a
+        &:hover
+          background: white
+          color: $paris
+
+    /* menu item with submenu */
+    .with-subfmenu
+      &:hover:after
+        color: $paris
+
+      /* submenu */
+      .subfmenu
+        a
+          color: white
+          background: $paris
+
+          &:hover
+            background: white
+            color: $paris

@@ -6,7 +6,11 @@
 }
 
 body {
-  background: #cd8675;
+  background: #d1d1d1;
+}
+
+p {
+  margin: 300px 0;
 }
 
 /* navbar */
@@ -25,14 +29,14 @@ body {
   -webkit-align-items: center;
       -ms-flex-align: center;
           align-items: center;
-  padding: 15px;
   position: relative;
-  min-height: 50px
+  min-height: 50px;
+  padding: 0 15px
   /* primary menu */
   /* toggle menu button */
 }
 .fmenu .fmenu-logo {
-  width: 80px;
+  height: 40px;
 }
 .fmenu .fmenu-search {
   position: relative;
@@ -62,7 +66,8 @@ body {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
-  display: flex
+  display: flex;
+  background: #333
   /* menu item with submenu */
 }
 @media(max-width: 769px) {
@@ -91,6 +96,9 @@ body {
   top: 10px;
   right: 0px;
 }
+.fmenu ul .with-subfmenu:hover:after {
+  color: #333;
+}
 .fmenu ul .with-subfmenu .subfmenu {
   position: absolute;
   top: 100%;
@@ -111,12 +119,12 @@ body {
   display: block;
   padding: 10px 15px;
   text-decoration: none;
-  color: #333;
-  background: white;
+  color: white;
+  background: #333;
 }
 .fmenu ul .with-subfmenu .subfmenu a:hover {
-  background: #333;
-  color: white;
+  background: white;
+  color: #333;
 }
 @media(max-width: 769px) {
   .fmenu ul .with-subfmenu .subfmenu {
@@ -126,7 +134,7 @@ body {
   }
 }
 .fmenu ul .with-subfmenu .subfmenu .with-subfmenu:after {
-  color: #333;
+  color: white;
 }
 .fmenu ul .with-subfmenu .subfmenu .with-subfmenu .subfmenu {
   left: 100%;
@@ -166,9 +174,7 @@ body {
   display: block;
   padding: 10px 15px;
   text-decoration: none;
-  color: white;
   width: 100%;
-  border-bottom: 1px solid #4a4a4a;
 }
 [data-fmenu-allMobile="true"] ul li a:hover {
   background: white;
@@ -195,12 +201,6 @@ body {
   display: block;
   padding: 10px 15px;
   text-decoration: none;
-  color: #333;
-  background: white;
-}
-[data-fmenu-allMobile="true"] ul .with-subfmenu .subfmenu a:hover {
-  background: #333;
-  color: white;
 }
 [data-fmenu-allMobile="true"] ul .with-subfmenu .subfmenu a:after {
   content: "";
@@ -228,13 +228,7 @@ body {
   display: block;
   padding: 10px 15px;
   text-decoration: none;
-  color: white;
   width: 100%;
-  border-bottom: 1px solid #4a4a4a;
-}
-.fmenu-show ul li a:hover {
-  background: white;
-  color: #333;
 }
 .fmenu-show ul .with-subfmenu {
   /* submenu */
@@ -260,12 +254,6 @@ body {
   display: block;
   padding: 10px 15px;
   text-decoration: none;
-  color: #333;
-  background: white;
-}
-.fmenu-show ul .with-subfmenu .subfmenu a:hover {
-  background: #333;
-  color: white;
 }
 .fmenu-show ul .with-subfmenu .subfmenu a:after {
   content: "";
@@ -293,7 +281,6 @@ body {
 [data-fmenu-dir="rtl"] .with-subfmenu:after {
   content: "+";
   position: absolute;
-  color: white;
   right: 85% !important;
 }
 [data-fmenu-dir="rtl"] .with-subfmenu .subfmenu {
@@ -316,6 +303,136 @@ body {
   right: 20px;
 }
 
+/*vertical menu */
+[data-fmenu-vertical="true"] {
+  /* primary menu */
+}
+[data-fmenu-vertical="true"] ul:not(.subfmenu) {
+  -webkit-transform-origin: right;
+      -ms-transform-origin: right;
+          transform-origin: right;
+  -webkit-transition: 0.5s ease-in-out all;
+          transition: 0.5s ease-in-out all;
+  height: 100vh;
+  width: 200px;
+  display: block;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin: 0 !important
+  /* menu item */
+  /* menu item with submenu */
+}
+[data-fmenu-vertical="true"] ul:not(.subfmenu) li {
+  width: 100%;
+  position: relative;
+}
+[data-fmenu-vertical="true"] ul:not(.subfmenu) li a {
+  display: block;
+  padding: 10px 15px;
+  text-decoration: none;
+  width: 100%;
+}
+[data-fmenu-vertical="true"] ul:not(.subfmenu) .with-subfmenu {
+  position: relative
+  /* submenu */
+}
+[data-fmenu-vertical="true"] ul:not(.subfmenu) .with-subfmenu a {
+  position: relative;
+}
+[data-fmenu-vertical="true"] ul:not(.subfmenu) .with-subfmenu:hover .subfmenu {
+  visibility: visible;
+}
+[data-fmenu-vertical="true"] ul:not(.subfmenu) .with-subfmenu .subfmenu {
+  position: relative;
+  display: none;
+  margin: 0 !important;
+  -webkit-transform: scaleY(1);
+      -ms-transform: scaleY(1);
+          transform: scaleY(1);
+}
+[data-fmenu-vertical="true"] ul:not(.subfmenu) .with-subfmenu .subfmenu .subfmenu {
+  right: 0 !important;
+  left: 0 !important;
+  display: none;
+  margin: 0 !important;
+  position: relative;
+}
+[data-fmenu-vertical="true"] ul:not(.subfmenu) .with-subfmenu .subfmenu .subfmenu a {
+  padding: 10px 35px;
+}
+[data-fmenu-vertical="true"] ul:not(.subfmenu) .with-subfmenu .subfmenu a {
+  display: block;
+  padding: 10px 25px;
+  text-decoration: none;
+}
+[data-fmenu-vertical="true"] ul:not(.subfmenu) .with-subfmenu .subfmenu a:after {
+  content: "";
+}
+[data-fmenu-vertical="true"] .fmenu-btn {
+  display: block;
+}
+
+/*hide vertical menu */
+.hide-vertical ul {
+  -webkit-transform: rotateY(90deg);
+          transform: rotateY(90deg);
+}
+
+[data-fmenu-theme="london"] {
+  background: #219c56
+  /* primary menu */
+}
+[data-fmenu-theme="london"] ul {
+  background: #219c56
+  /* menu item with submenu */
+}
+[data-fmenu-theme="london"] ul li a:hover {
+  background: white;
+  color: #219c56;
+}
+[data-fmenu-theme="london"] ul .with-subfmenu {
+  /* submenu */
+}
+[data-fmenu-theme="london"] ul .with-subfmenu:hover:after {
+  color: #219c56;
+}
+[data-fmenu-theme="london"] ul .with-subfmenu .subfmenu a {
+  color: white;
+  background: #219c56;
+}
+[data-fmenu-theme="london"] ul .with-subfmenu .subfmenu a:hover {
+  background: white;
+  color: #219c56;
+}
+
+[data-fmenu-theme="paris"] {
+  background: #12489a
+  /* primary menu */
+}
+[data-fmenu-theme="paris"] ul {
+  background: #12489a
+  /* menu item with submenu */
+}
+[data-fmenu-theme="paris"] ul li a:hover {
+  background: white;
+  color: #12489a;
+}
+[data-fmenu-theme="paris"] ul .with-subfmenu {
+  /* submenu */
+}
+[data-fmenu-theme="paris"] ul .with-subfmenu:hover:after {
+  color: #12489a;
+}
+[data-fmenu-theme="paris"] ul .with-subfmenu .subfmenu a {
+  color: white;
+  background: #12489a;
+}
+[data-fmenu-theme="paris"] ul .with-subfmenu .subfmenu a:hover {
+  background: white;
+  color: #12489a;
+}
+
 /*bottom menu */
 [data-fmenu-position="bottom"] {
   position: absolute;
@@ -328,10 +445,6 @@ body {
   position: fixed;
   top: 0;
   left: 0;
-}
-
-p {
-  margin: 300px 0;
 }
 
 /*# sourceMappingURL=fmenu.css.map */

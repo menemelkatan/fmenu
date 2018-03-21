@@ -1,0 +1,36 @@
+/*rtl menu*/
+[data-fmenu-dir="rtl"]
+  direction: rtl
+  /* toggle menu button */
+  .fmenu-btn
+    right: calc(100% - 40px)
+    top: 10px
+
+  /* menu item with submenu */
+  .with-subfmenu
+    position: relative
+
+    &:after
+      content: "+"
+      position: absolute
+      right: 85% !important
+
+
+    /* submenu */
+    .subfmenu
+      top: 100%
+      left: 0
+
+      .subfmenu
+        right: 100%
+
+
+.fmenu-show[data-fmenu-dir="rtl"]
+  /* submenu */
+  .subfmenu
+    position: relative
+    display: none
+    margin-right: 20px
+
+    .subfmenu
+      right: 20px

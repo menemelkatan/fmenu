@@ -11,3 +11,5 @@ data-fmenu-allMobile|boolean|false|make the fmenu style like mobile all time
 data-fmenu-logo|["string"]logo url|-|put logo inside the fmenu
 data-fmenu-search|["string"]search url|-|add search feature to the fmenu
 data-fmenu-position|bottom, top|top|position of the fmenu
+data-fmenu-vertical|boolean|false|make the fmenu vertical
+data-fmenu-theme|london, paris|-|change fmenu theme

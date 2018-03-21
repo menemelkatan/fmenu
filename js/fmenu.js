@@ -3,11 +3,6 @@ var fmenu = document.querySelectorAll('[data-fmenu]');
 var searchForm = "<input type='text' id='fmenu-search'>" + '<label for="fmenu-search"><i class="fa fa-search" name="q"></i></label>';
 
 
-
-window.onresize= function() {
-  console.log(window.innerWidth)
-}
-
 window.onload = function() {
 
   for(var i = 0; i < fmenu.length; i++){
@@ -16,7 +11,6 @@ window.onload = function() {
     qqq.innerHTML = "<i class='fa fa-bars'></i>";
     fmenu[i].appendChild(qqq);
   }
-
 
   fmenu.forEach(function(el) {
     el.classList.add('fmenu');
@@ -38,9 +32,19 @@ window.onload = function() {
       el.insertBefore(qqq, el.lastElementChild)
     }
 
-    el.lastElementChild.onclick = function() {
-      el.classList.toggle('fmenu-show');
+    //vertical menu
+    if(el.getAttribute('data-fmenu-vertical') === "true"){
+      el.lastElementChild.onclick = function() {
+        el.classList.toggle('hide-vertical');
+      }
     }
+
+    else{
+      el.lastElementChild.onclick = function() {
+        el.classList.toggle('fmenu-show');
+      }
+    }
+
     var ss = el.querySelectorAll('li');
     ss.forEach(function(ol) {
       if(ol.children.length > 1) {
