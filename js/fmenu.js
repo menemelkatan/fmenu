@@ -4,6 +4,8 @@ var searchForm = "<input type='text' id='fmenu-search'>" + '<label for="fmenu-se
 
 var loginForm = '<i class="fa fa-user"></i>' + '<form>' + '<input type="email" placeholder="email">' + '<input type="password" placeholder="password">' + '<button>Login</button>' + '</form>';
 
+var siblings = n => [...n.parentElement.children].filter(c=>c!=n)
+
 
 function fmenuRun () {
 
@@ -17,6 +19,25 @@ function fmenuRun () {
 
   fmenu.forEach(function(el) {
     el.classList.add('fmenu');
+
+    //social icons
+    if(el.hasAttribute('data-fmenu-social')){
+      var socials = JSON.parse(el.getAttribute('data-fmenu-social'));
+      var qqq = document.createElement('ol');
+
+      qqq.className = 'fmenu-social';
+      for(var social in socials) {
+        console.log(social + ' => '+socials[social]);
+        var aaa = document.createElement('a');
+        var iii = document.createElement('i');
+        iii.classList.add('fa');
+        qqq.appendChild(aaa);
+        aaa.setAttribute('href', socials[social]);
+        aaa.appendChild(iii);
+        iii.classList.add('fa-'+social+'');
+      }
+      el.insertBefore(qqq, el.children[1])
+    }
 
     // add the logo
     if(el.hasAttribute('data-fmenu-logo')){
@@ -64,8 +85,10 @@ function fmenuRun () {
         ol.children[1].classList.add('subfmenu');
         ol.children[0].onclick = function () {
           ol.children[1].classList.toggle('subfmenu-show');
+
         }
       }
+
     });
 
     var hh = el.querySelectorAll('.fmenu-login');

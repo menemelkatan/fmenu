@@ -14,3 +14,4 @@ data-fmenu-position|bottom, top|top|position of the fmenu
 data-fmenu-vertical|boolean|false|make the fmenu vertical
 data-fmenu-theme|london, paris|-|change fmenu theme
 data-fmenu-login|["string"]login page url|-|add login form to the fmenu
+data-fmenu-social|["object"]|-|EX: data-fmenu-social='{"facebook": "http://fb.me/hello", "instagram": "http://instagram.com/hello"}'
