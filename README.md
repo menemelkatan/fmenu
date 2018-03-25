@@ -15,6 +15,7 @@ data-fmenu-vertical|boolean|false|make the fmenu vertical
 data-fmenu-theme|london, paris|-|change fmenu theme
 data-fmenu-login|["string"]login page url|-|add login form to the fmenu
 data-fmenu-social|[object]|-|add social media icons
+data-fmenu-json|["string"]json url|-|get fmenu data from json file
 
 ## How it works
 Here is a simple Fmenu setup:

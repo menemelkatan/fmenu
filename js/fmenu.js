@@ -4,10 +4,28 @@ var searchForm = "<input type='text' id='fmenu-search'>" + '<label for="fmenu-se
 
 var loginForm = '<i class="fa fa-user"></i>' + '<form>' + '<input type="email" placeholder="email">' + '<input type="password" placeholder="password">' + '<button>Login</button>' + '</form>';
 
-var siblings = n => [...n.parentElement.children].filter(c=>c!=n)
+var siblings = n => [...n.parentElement.children].filter(c=>c!=n);
 
+var isObject = function(a) {
+    return (!!a) && (a.constructor === Object);
+};
+
+//get json data from the server
+function readTextFile(file, callback) {
+    var rawFile = new XMLHttpRequest();
+    rawFile.overrideMimeType("application/json");
+    rawFile.open("GET", file, true);
+    rawFile.onreadystatechange = function() {
+        if (rawFile.readyState === 4 && rawFile.status == "200") {
+            callback(rawFile.responseText);
+        }
+    }
+    rawFile.send(null);
+}
 
 function fmenuRun () {
+
+
 
   // initialize fmenu toggle button
   for(var i = 0; i < fmenu.length; i++){
@@ -20,6 +38,9 @@ function fmenuRun () {
   fmenu.forEach(function(el) {
     el.classList.add('fmenu');
 
+
+
+
     //social icons
     if(el.hasAttribute('data-fmenu-social')){
       var socials = JSON.parse(el.getAttribute('data-fmenu-social'));
@@ -27,7 +48,6 @@ function fmenuRun () {
 
       qqq.className = 'fmenu-social';
       for(var social in socials) {
-        console.log(social + ' => '+socials[social]);
         var aaa = document.createElement('a');
         var iii = document.createElement('i');
         iii.classList.add('fa');
@@ -73,9 +93,9 @@ function fmenuRun () {
     }
 
     else{
-      el.lastElementChild.onclick = function() {
+      el.lastElementChild.addEventListener('click', function() {
         el.classList.toggle('fmenu-show');
-      }
+      })
     }
 
     var ss = el.querySelectorAll('li');
@@ -98,7 +118,54 @@ function fmenuRun () {
           sl.children[1].classList.toggle('subfmenu-show');
         }
       }
-    })
+    });
+
+    //get data from json
+    if(el.hasAttribute('data-fmenu-json')){
+      var qq = document.createElement('ul');
+      readTextFile(el.getAttribute('data-fmenu-json'), function(text){
+          var fmenuItems = JSON.parse(text);
+          for(var item in fmenuItems) {
+
+            if (isObject(fmenuItems[item])) {
+              var qqq = document.createElement('ul');
+              qqq.classList.add('subfmenu');
+              for(var subItem in fmenuItems[item]) {
+                var lll = document.createElement('li');
+                var aaa = document.createElement('a');
+                lll.appendChild(aaa);
+                aaa.setAttribute('href', fmenuItems[item][subItem]);
+                qqq.appendChild(lll);
+                aaa.innerHTML = subItem;
+              }
+
+              var vl = document.createElement('li');
+              var va = document.createElement('a');
+              va.setAttribute('href', '#!');
+              va.innerHTML = item;
+              vl.classList.add('with-subfmenu');
+              vl.onclick = function () {
+                qqq.classList.toggle('subfmenu-show');
+
+              }
+              vl.appendChild(va);
+              vl.appendChild(qqq);
+              qq.appendChild(vl);
+            }
+
+            else {
+              var ll = document.createElement('li');
+              var aa = document.createElement('a');
+              ll.appendChild(aa);
+              aa.setAttribute('href', fmenuItems[item]);
+              qq.appendChild(ll);
+              aa.innerHTML = item;
+            }
+          }
+      });
+
+      el.appendChild(qq);
+    }
   })
 
 }
