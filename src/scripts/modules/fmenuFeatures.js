@@ -26,7 +26,7 @@ const fmenuSocial = function(element) {
       aaa.appendChild(iii);
       iii.classList.add('fa-'+social+'');
     }
-    element.insertBefore(qqq, element.children[1]);
+    element.querySelectorAll('.fmenu-tools')[0].appendChild(qqq);
   }
 };
 
@@ -37,7 +37,7 @@ const fmenuSearch = function(element) {
     qqq.innerHTML = searchForm;
     qqq.className = 'fmenu-search';
     qqq.setAttribute('action', ''+element.getAttribute('data-fmenu-search')+'');
-    element.insertBefore(qqq, element.lastElementChild);
+    element.querySelectorAll('.fmenu-tools')[0].appendChild(qqq);
   }
 };
 
@@ -48,7 +48,7 @@ const fmenuLogin = function(element) {
     qqq.innerHTML = loginForm;
     qqq.className = 'fmenu-login';
     qqq.lastElementChild.setAttribute('action', ''+element.getAttribute('data-fmenu-login')+'');
-    element.insertBefore(qqq, element.lastElementChild);
+    element.querySelectorAll('.fmenu-tools')[0].appendChild(qqq);
   }
 };
 

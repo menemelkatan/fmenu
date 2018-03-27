@@ -17,6 +17,10 @@ function fmenuRun () {
 
   fmenu.forEach(function(el) {
 
+    var qqq = document.createElement('div');
+    qqq.className = 'fmenu-tools';
+    el.insertBefore(qqq, el.lastElementChild); 
+
     //social icons
     fmenuSocial(el);
 
